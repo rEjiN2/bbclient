@@ -1,0 +1,36 @@
+{
+  "name": "bullndbear",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.1",
+    "@mui/material": "^5.15.1",
+    "@mui/x-date-pickers": "^6.18.6",
+    "@stripe/stripe-js": "^2.2.2",
+    "antd": "^5.12.5",
+    "bcrypt": "^5.1.1",
+    "framer-motion": "^10.16.16",
+    "jose": "^5.2.0",
+    "mongoose": "^8.0.3",
+    "next": "14.0.4",
+    "next-auth": "^4.24.5",
+    "react": "^18",
+    "react-countup": "^6.5.0",
+    "react-dom": "^18",
+    "react-icons": "^4.12.0",
+    "stripe": "^14.10.0",
+    "styled-components": "^6.1.3"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4"
+  }
+}
