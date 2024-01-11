@@ -28,7 +28,7 @@ const ProjectItems = () => {
           <Typography variant="body1" color="darkgray" paddingTop='1rem' fontWeight='500'>
             {topSection.description}
           </Typography>
-          <Button sx={{background:'linear-gradient(to right, #f3904f, #3b4371)',borderRadius:'5px',fontWeight:'bold',textTransform:'none',color:'#fff',marginTop:'1rem',width:'180px'}} >اكتشف المزيد</Button>
+          <Button sx={{background:'#32385a',borderRadius:'5px',fontWeight:'bold',textTransform:'none',color:'#fff',marginTop:'1rem',width:'180px'}} >اكتشف المزيد</Button>
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
           <Typography gutterBottom variant="h4" component="div" style={{fontWeight:'bold',color:'#485563',textTransform:'none'}}>
@@ -61,7 +61,7 @@ const ProjectItems = () => {
                 </Typography>
               </CardContent>
               <Box sx={{ display: 'flex', justifyContent: 'right', padding: 2 }}>
-                <Button style={{background:'linear-gradient(to right, #f3904f, #3b4371)',borderRadius:'5px',fontWeight:'500',textTransform:'none',width:'150px'}} size="small"  variant="contained">تعلم المزيد</Button>
+                <Button style={{background:'#32385a',borderRadius:'5px',fontWeight:'500',textTransform:'none',width:'150px'}} size="small"  variant="contained">تعلم المزيد</Button>
               </Box>
             </Card>
           </Grid>

@@ -57,7 +57,7 @@ const Contact = () => {
       </Box>
                          </Box>
              <TextField   type='text' placeholder="أدخل الرسالة" multiline rows={6} maxRows={4}   InputProps={{ style: {borderRadius: '8px', fontFamily: "Rubik", fontSize: '15px', width: '85%',direction:'rtl'}}}  />
-             <Button variant='contained' sx={{ background: 'linear-gradient(to right, #141e30, #243b55)', borderRadius: '8px', height: '45px', textTransform: 'none', fontFamily: "Rubik", fontSize: '15px', width: '85%' }}>إرسال</Button>
+             <Button variant='contained' sx={{ background: '#32385a', borderRadius: '8px', height: '45px', textTransform: 'none', fontFamily: "Rubik", fontSize: '15px', width: '85%' }}>إرسال</Button>
             </Box>
             <Box sx={{flex:1,display:'flex' ,alignItems:'center',justifyContent:'center'}}>
             <Box sx={{flex:1,flexGrow:1,height:'600px',width:'200px' ,boxShadow:'0px 4px 8px rgba(0, 0, 0, 0.1)',borderRadius:'11px'}}>

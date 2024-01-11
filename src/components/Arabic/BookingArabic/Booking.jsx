@@ -93,7 +93,7 @@ const Booking = () => {
             
            </Box>
            <Box sx={{width:'250px',height:'25%',border:'2px solid #f3f3f3',borderRadius:'25px',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',marginTop:'1rem'}}>
-                      <Box sx={{background:'linear-gradient(to right, #f3904f, #3b4371)',height:'50%',borderRadius:'25px 25px 0 0',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}} >
+                      <Box sx={{background:'#32385a',height:'50%',borderRadius:'25px 25px 0 0',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}} >
                       <Typography fontFamily='Rubik' fontSize='16px' fontWeight='500' color='#fff'>Free Consultations</Typography>
                         <Typography fontFamily='Rubik' fontSize='10px' align='center' fontWeight='400' color='#fff'>Consultation with Proffesionals for 10 min</Typography>
                       </Box>
