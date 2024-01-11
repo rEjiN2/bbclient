@@ -44,7 +44,7 @@ const Columns =()=> {
     };
   
     return (
-      <Container maxWidth="lg" sx={{ padding: '1rem' }}>
+      <Container maxWidth="lg" sx={{ padding: '5rem 0 3rem ' }}>
         <Typography  fontSize='20px' textTransform='none' marginBottom={'1rem'}   sx={{ textAlign: 'center', color: '#485563',fontWeight:'600' }}>
         WHAT WE DO
         </Typography>

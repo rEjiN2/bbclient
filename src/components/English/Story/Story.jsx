@@ -12,7 +12,7 @@ const Story = () => {
       setShowMore(!showMore);
     };
   return (
-      <Container sx={{ marginTop: '2rem', width: '100vw' }}>
+      <Container sx={{ marginTop: '2rem', width: '100vw',padding:"3rem 0" }}>
 
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'column', md: 'column', lg: 'row' }, width: '100%',gap:'2rem' }}>
 
@@ -24,11 +24,11 @@ const Story = () => {
 
                   <Typography fontSize='30px' color='#f3904f' fontWeight='600'> We are the magic behind the company’s best days. </Typography>
 
-                   <Typography fontSize='15px' color='lightgray' fontWeight='500' textAlign='justify' paddingTop='1.5rem'>
+                   <Typography fontSize='15px' color='gray' fontWeight='500' textAlign='justify' paddingTop='1.5rem'>
                       It is a management consulting company specialized in finding development solutions for commercial and governmental projects. Today, a large number of companies need to find innovative solutions to increase sales, marketing, or manage operations.
                   </Typography>
-                  <Typography fontSize='15px' color='lightgray' fontWeight='500' textAlign='justify' paddingTop='1.5rem'>Using global and proven strategies, we help you achieve your goals and create influence by strengthening your team's management, leadership qualities, mindset and methodology.</Typography>
-                  <Button sx={{ border: '1px solid #f3f3f3', borderRadius: '6px', color: '#fff', textTransform: 'none', width: '180px', marginTop: '1.5rem', background: 'linear-gradient(to right, #f3904f, #3b4371)' }}>Load More</Button>
+                  <Typography fontSize='15px' color='gray' fontWeight='500' textAlign='justify' paddingTop='1.5rem'>Using global and proven strategies, we help you achieve your goals and create influence by strengthening your team's management, leadership qualities, mindset and methodology.</Typography>
+                  <Button sx={{ border: '1px solid #f3f3f3', borderRadius: '6px', color: '#fff', textTransform: 'none', width: '180px', marginTop: '1.5rem', background: 'linear-gradient(to right, #32385a, #3b4371)' }}>Load More</Button>
 
               </Box>
 

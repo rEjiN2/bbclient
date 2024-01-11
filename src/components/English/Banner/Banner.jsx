@@ -73,8 +73,8 @@ const Banner = () => {
             Consulting is a long-term investment in your goals future.
           </h3>
           <p style={{ fontWeight: 'bold',marginTop:'1.5rem',textAlign:'left' }}>We offer you professional support for your ambitions - your personal investment plan starts with us from scratch</p>
-          <button style={{
-            background: 'linear-gradient(to right, #141e30, #243b55)',
+          <button style={{  
+            background: 'linear-gradient(to right, #141e30, #32385a)',
             color: '#fff',
             width:'180px',
             height:'45px',

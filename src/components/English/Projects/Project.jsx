@@ -21,7 +21,7 @@ const topSection = {
 
 const ProjectItems = () => {
   return (
-    <Container  sx={{ flexGrow: 1, paddingTop:'80px',paddingBottom:'1rem' }}>
+    <Container  sx={{ flexGrow: 1, paddingTop:'80px',paddingBottom:'5rem' }}>
  <Grid container spacing={5} alignItems="center" justifyContent="center">
         <Grid item xs={12} sm={12} md={6}>
           <Typography gutterBottom variant="h4" component="div" style={{fontWeight:'bold',color:'#485563',textTransform:'none'}}>
@@ -36,7 +36,7 @@ const ProjectItems = () => {
           <Typography variant="body1" color="darkgray" paddingTop='1rem' fontWeight='500'>
             {topSection.description}
           </Typography>
-          <Button sx={{background:'linear-gradient(to right, #f3904f, #3b4371)',borderRadius:'5px',fontWeight:'bold',textTransform:'none',color:'#fff',marginTop:'1rem',width:'180px'}} >DISCOVER MORE</Button>
+          <Button sx={{background:'#32385a',borderRadius:'5px',fontWeight:'bold',textTransform:'none',color:'#fff',marginTop:'1rem',width:'180px'}} >DISCOVER MORE</Button>
         </Grid>
       </Grid>
 
@@ -60,7 +60,7 @@ const ProjectItems = () => {
                 </Typography>
               </CardContent>
               <Box sx={{ display: 'flex', justifyContent: 'start', padding: 2 }}>
-                <Button style={{background:'linear-gradient(to right, #f3904f, #3b4371)',borderRadius:'5px',fontWeight:'500',textTransform:'none',width:'150px'}} size="small"  variant="contained">Learn More</Button>
+                <Button style={{background:'#32385a',borderRadius:'5px',fontWeight:'500',textTransform:'none',width:'150px'}} size="small"  variant="contained">Learn More</Button>
               </Box>
             </Card>
           </Grid>
