@@ -9,13 +9,18 @@ import Typography from '@mui/material/Typography';
 import Stock from '../../../../public/stockImg.jpeg'
 import Image from 'next/image';
 import {useRouter} from 'next/navigation';
-export default function MediaCard({title,description,price,image}) {
+
+
+
+
+
+export default function MediaCard({title,description,price,image,id}) {
   const router = useRouter()
 
 
 
   const handleBook = ()=>{
-    router.push('/confirmbooking') 
+    router.push(`/confirmbooking/${id}`) 
   }
   return (
     <Card sx={{ maxWidth: 345, height: '100%',display: 'flex', flexDirection: 'column',justifyContent:'space-between' }}>

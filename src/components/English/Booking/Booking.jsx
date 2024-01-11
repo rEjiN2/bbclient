@@ -1,6 +1,6 @@
 "use client"
 import { Container,Box,Typography,Button } from '@mui/material'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Radio from '@mui/material/Radio';
 import Grid from '@mui/material/Grid';
 import MediaCard from '../BookCard/BookCard';
@@ -13,12 +13,33 @@ import Stock4 from '../../../../public/stockImg4.jpeg'
 
 const Booking = () => {
   const [selectedValue, setSelectedValue] = useState(0);
-
+  const [courseData, setCourseData] = useState([]);
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
- 
 
+
+
+  useEffect(()=>{
+    const fetchCourses = async()=>{
+      const response   = await fetch('/api/getCourse',{
+        method:'GET',
+        headers:{
+          'Content-type':'application/json'
+        }
+      })
+      if(response.ok){
+        const courses = await response.json()
+        setCourseData(courses)
+      }
+     
+  
+    }
+  
+    fetchCourses()
+  },[])
+ 
+console.log(courseData,"c");
 
   const Categories = ["Investment Advisory","Market Research","Market Trends Analysis","Risk Management","Technical Analysis","Financial Planning","Trading Strategies" ]
   const Services = [{title:'Individual Consultation',description:'Individual consultation with Salih Nam - later appointments',price:'1466',image:Stock},
@@ -98,9 +119,9 @@ const Booking = () => {
         display: 'none', 
     },}}>
            <Grid container spacing={2}>
-      {Services.map((service,index) => (
+      {courseData.map((service,index) => (
         <Grid item xs={12} sm={6} md={4} key={index}>
-          <MediaCard title={service.title} description= {service.description} price={service.price} image={service.image} />
+          <MediaCard title={service.title} description= {service.description} price={service.price} image={service.image} id={service._id} />
         </Grid>
       ))}
     </Grid>

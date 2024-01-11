@@ -1,6 +1,6 @@
 "use client"
-import React,{useState} from 'react'
-import { Box,Typography,Button, Container, TextField } from '@mui/material'
+import React,{useState,useEffect} from 'react'
+import { Box,Typography,Button, Container, TextField, Select, MenuItem } from '@mui/material'
 import Calendar from '../Calendar/Calendar'
 import TimeRange from '../TimePicker/TimePicker'
 import Accordion from '@mui/material/Accordion';
@@ -8,9 +8,43 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useRouter } from 'next/navigation'
-const BookingConfirm = () => {
+const BookingConfirm = ({courseDetails,dates}) => {
+  
+  
+  console.log(courseDetails,'det');
+  const dateData = courseDetails?.dates 
+  
+  // Now parse the JSON data
+  // const parsedDates = JSON.parse(dateData);
+  // console.log(parsedDates);
+  // const dateDatas = JSON.parse(dateData)
+  const parsedDates =dates
+  console.log(parsedDates,"par");
+
   const router = useRouter()
     const [expanded, setExpanded] = useState(false);
+    const [selectedDate, setSelectedDate] = useState('');
+    const [availableTimes, setAvailableTimes] = useState([]);
+    const [selectedTime, setSelectedTime] = useState('');
+
+    // Update available times when selected date changes
+    useEffect(() => {
+        const found = parsedDates.find(d => d.date === selectedDate);
+        if (found) {
+            setAvailableTimes(found.time);
+        }
+    }, [selectedDate]);
+
+    // Handle change in date select
+    const handleDateChange = (event) => {
+        setSelectedDate(event.target.value);
+        setSelectedTime('');
+    };
+
+    // Handle change in time select
+    const handleTimeChange = (event) => {
+        setSelectedTime(event.target.value);
+    };
 
     const handleChange = (panel) => (event, isExpanded) => {
       setExpanded(isExpanded ? panel : false);
@@ -29,55 +63,62 @@ const BookingConfirm = () => {
             <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3' }}></Box>
           </Box>
           <Box sx={{ paddingTop: '1.5rem' }}>
-            <Typography  fontSize='20px' fontWeight='550' color='#021b79' >Learn stocks from scratch 101 course</Typography>
-            <Typography  fontSize='13px' fontWeight='400' color='#2c3e50' >Check our availability and book a date and time that suits you</Typography>
+            <Typography  fontSize='20px' fontWeight='550' color='#021b79' >{courseDetails?.title}</Typography>
+            <Typography  fontSize='13px' fontWeight='400' color='#2c3e50' >{courseDetails?.description}</Typography>
           </Box>
         </Box>
 
-
-        <Box sx={{ paddingTop: '2rem', display: 'flex', gap: '2rem',justifyContent:'center' }}>
-          <Box sx={{ paddingTop: '1rem' }}>
-            <Typography align='center'  fontSize='15px' fontWeight='500' color='#021b79'>Select your date</Typography>
-            <Calendar />
+        <Box>
+          {/* <Typography  fontSize='20px' fontWeight='500' color='#021b79' paddingTop='1rem'>Enter client Details</Typography> */}
+          <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3' }}></Box>
+          <Box sx={{ width: '100%',display:'flex',alignItems:'center',gap:'1rem',marginTop:'1rem'}}>
+          <TextField placeholder='Enter the Name' sx={{width:'30%'}} type='text' InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '12px', marginTop:'1rem' } }} />
+          <TextField placeholder='Enter the Email' sx={{width:'30%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '12px',marginTop:'1rem' } }} />
+          </Box>
+          <Box>
+          <TextField placeholder='Enter the Phone number' sx={{width:'61.5%'}} InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '12px', marginTop:'1rem' } }} />
           </Box>
 
-          {/* <Box sx={{ paddingTop: '1rem' }}>
-            <Typography align='center'  fontSize='15px' fontWeight='500' color='#021b79' paddingBottom='1.5rem'>Select your time range</Typography>
-            <TimeRange />
-          </Box> */}
-
-          <Box sx={{ paddingTop: '1rem' }}>
-            <Typography align='center'  fontSize='15px' fontWeight='500' color='#021b79' paddingBottom='1.5rem'>Availability</Typography>
-            <Button variant='contained' sx={{ background: 'linear-gradient(to right, #141e30, #243b55)', borderRadius: '8px', height: '30px', textTransform: 'none', fontFamily: "Rubik", fontSize: '12px' }}>Check Your Availability</Button>
-          </Box>
-
-
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Accordion sx={{ width: '200px', boxShadow: 'none', paddingBottom: '0.8rem' }} disableGutters={true} square>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography align='center'  fontSize='15px' fontWeight='500' color='#021b79' >Service Details</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography align='left'  fontSize='11px' fontWeight='400' color='#2c3e50'>
-                  Individual consultation with Saif Al Naqbi - later appointments
-                </Typography>
-                <Typography align='left'  fontSize='13px' fontWeight='500' color='#2c3e50' paddingTop='1rem'>
-                  Price :       AED 1368
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-
-            <TextField placeholder='Apply Coupon' InputProps={{ style: { borderRadius: '8px', height: '30px', fontFamily: "Rubik", fontSize: '12px', width: '100%' } }} />
-            <Button variant='contained' sx={{ background: 'linear-gradient(to right, #141e30, #243b55)', borderRadius: '8px', height: '30px', textTransform: 'none', fontFamily: "Rubik", fontSize: '12px', width: '100%', marginTop: '1rem' }}>Apply</Button>
-
-          </Box>
-
-
+          
+           
+          
         </Box>
+        <Box sx={{marginTop:'1rem'}}>
+            <Typography fontSize='16px' fontWeight='500' color='#2c3e50'>Choose the Available Date*</Typography>
+            <Select
+                value={selectedDate}
+                onChange={handleDateChange}
+                displayEmpty
+                sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'61.5%',borderRadius:'8px'}}
+                // fullWidth
+                
+            >
+                
+                {parsedDates.map((item, index) => (
+                    <MenuItem key={index} value={item.date}>{item.date}</MenuItem>
+                ))}
+            </Select>
+
+            {selectedDate && (
+                <>
+                    <Typography fontSize='16px' fontWeight='500' color='#2c3e50' sx={{ mt: 2 }}>Choose the Available Time*</Typography>
+                    <Select
+                        value={selectedTime}
+                        onChange={handleTimeChange}
+                        displayEmpty
+                        sx={{height:'40px',fontSize:'13px' ,fontWeight:500,width:'61.5%',borderRadius:'8px'}}
+                      
+                    >
+                        
+                        {availableTimes.map((time, index) => (
+                            <MenuItem key={index} value={time}>{time}</MenuItem>
+                        ))}
+                    </Select>
+                </>
+            )}
+        </Box>
+
+       
 
         <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3',marginTop:'2rem' }}></Box>
         <Box sx={{display:'flex',alignItems:'center',justifyContent:'center'}}>
