@@ -35,7 +35,7 @@ export const POST = async(request)=>{
           time: metadata.selectedTime,
           package: metadata.courseTitle,
           courseId: metadata.courseId,
-          userId:metadata.userId
+          userId:metadata.userId,
         });
 
         await newBooking.save();
