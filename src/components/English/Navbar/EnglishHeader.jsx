@@ -19,6 +19,7 @@ import Image from 'next/image';
 import Logo from '../../../../public/lOGO.png'
 import Logo1 from '../../../../public/logo4.png'
 import User from '../../../../public/User.jpg'
+import Userlog from '../../../../public/userlog.webp'
 import Link from 'next/link';
 import Language from '../../../../public/lang.jpg'
 import Cart from '../../../../public/cart.webp'
@@ -281,7 +282,7 @@ const EnglishHeader = () => {
               aria-expanded={open ? 'true' : undefined}
             >
            <Avatar sx={{width:'30px' ,height:'30px'}}>
-     <Image src={User} alt="User"fill />
+     <Image src={Userlog} alt="User"fill />
   </Avatar>
              
             </IconButton>

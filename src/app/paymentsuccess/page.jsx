@@ -22,7 +22,7 @@ const PaymentSuccess = () => {
         <Typography variant="subtitle1" color="textSecondary">
           Your transaction was completed successfully.
         </Typography>
-        <Button onClick={handleBackToBookings} variant="contained" color="secondary" size="large" style={{ marginTop: 20 }}>
+        <Button onClick={handleBackToBookings} variant="contained" color="secondary" size="large" style={{ marginTop: 20,background:'#32385a' }}>
           Go Back to Bookings
         </Button>
       </Box>

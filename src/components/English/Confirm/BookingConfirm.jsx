@@ -13,11 +13,8 @@ const BookingConfirm = ({courseDetails,dates}) => {
   
   console.log(courseDetails,'det');
   const dateData = courseDetails?.dates 
+  const courseId = courseDetails?._id
   
-  // Now parse the JSON data
-  // const parsedDates = JSON.parse(dateData);
-  // console.log(parsedDates);
-  // const dateDatas = JSON.parse(dateData)
   const parsedDates =dates
   console.log(parsedDates,"par");
 
@@ -26,6 +23,9 @@ const BookingConfirm = ({courseDetails,dates}) => {
     const [selectedDate, setSelectedDate] = useState('');
     const [availableTimes, setAvailableTimes] = useState([]);
     const [selectedTime, setSelectedTime] = useState('');
+    const [username,setUserName]= useState('')
+    const [email,setEmail] = useState('')
+    const [phone,setPhone] = useState('')
 
     // Update available times when selected date changes
     useEffect(() => {
@@ -50,7 +50,22 @@ const BookingConfirm = ({courseDetails,dates}) => {
       setExpanded(isExpanded ? panel : false);
     };
 
+    console.log(selectedDate,selectedTime);
+    
    const handleBook = ()=>{
+    const bookingDetails = {
+      
+          username,
+          email,
+          phone,
+          selectedDate,
+          selectedTime,
+          courseId
+      
+  };
+
+  // Store the booking details in local storage
+  localStorage.setItem('booking', JSON.stringify(bookingDetails));
     router.push('/clientdetails')
    }
   return (
@@ -72,11 +87,11 @@ const BookingConfirm = ({courseDetails,dates}) => {
           {/* <Typography  fontSize='20px' fontWeight='500' color='#021b79' paddingTop='1rem'>Enter client Details</Typography> */}
           <Box sx={{ width: '100%', height: '2px', background: '#f3f3f3' }}></Box>
           <Box sx={{ width: '100%',display:'flex',alignItems:'center',gap:'1rem',marginTop:'1rem'}}>
-          <TextField placeholder='Enter the Name' sx={{width:'30%'}} type='text' InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '12px', marginTop:'1rem' } }} />
-          <TextField placeholder='Enter the Email' sx={{width:'30%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '12px',marginTop:'1rem' } }} />
+          <TextField placeholder='Enter the Name' onChange={(e)=>setUserName(e.target.value)} sx={{width:'30%'}} type='text' InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '12px', marginTop:'1rem' } }} />
+          <TextField placeholder='Enter the Email' onChange={(e)=>setEmail(e.target.value)} sx={{width:'30%'}} type='email' InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '12px',marginTop:'1rem' } }} />
           </Box>
           <Box>
-          <TextField placeholder='Enter the Phone number' sx={{width:'61.5%'}} InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '12px', marginTop:'1rem' } }} />
+          <TextField placeholder='Enter the Phone number' onChange={(e)=>setPhone(e.target.value)} sx={{width:'61.5%'}} InputProps={{ style: { borderRadius: '8px', height: '40px', fontFamily: "Rubik", fontSize: '12px', marginTop:'1rem' } }} />
           </Box>
 
           

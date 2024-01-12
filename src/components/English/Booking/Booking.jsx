@@ -42,21 +42,6 @@ const Booking = () => {
 console.log(courseData,"c");
 
   const Categories = ["Investment Advisory","Market Research","Market Trends Analysis","Risk Management","Technical Analysis","Financial Planning","Trading Strategies" ]
-  const Services = [{title:'Individual Consultation',description:'Individual consultation with Salih Nam - later appointments',price:'1466',image:Stock},
-  {title:'Learn stocks',description:'Learn stocks from scratch 101 course',price:'466',image:Stock1},
-  {title:'Stock Learning Crash',description:'Stock Learning Crash Course by Tint Clain-two days',price:'1466',image:Stock2},
-  {title:'Elite Membership',description:'Ran Elite Membership for 6 months',price:'787',image:Stock3},
-  {title:'Individual Consultation',description:'Individual consultation with Dr. Muhammad Al-Fandi',price:'700',image:Stock4},
-  {title:'Financial investments',description:'Financial investment plan consultation - Saif Al Naqbi',price:'1466',image:Stock1},
-  {title:'Online store',description:'Brand online store - later dates',price:'366',image:Stock2},
-  {title:'Business project',description:'Building or developing a business project', price:'1466', image:Stock4},
-
-
-
-
-
-]
-
 
   return (
     
@@ -121,7 +106,7 @@ console.log(courseData,"c");
            <Grid container spacing={2}>
       {courseData.map((service,index) => (
         <Grid item xs={12} sm={6} md={4} key={index}>
-          <MediaCard title={service.title} description= {service.description} price={service.price} image={service.image} id={service._id} />
+          <MediaCard title={service.title} description= {service.description} price={service.price} image={service.image} id={service._id} maxUsers={service.maxUsers} />
         </Grid>
       ))}
     </Grid>

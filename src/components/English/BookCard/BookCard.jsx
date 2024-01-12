@@ -14,7 +14,7 @@ import {useRouter} from 'next/navigation';
 
 
 
-export default function MediaCard({title,description,price,image,id}) {
+export default function MediaCard({title,description,price,image,id,maxUsers}) {
   const router = useRouter()
 
 
@@ -42,11 +42,13 @@ export default function MediaCard({title,description,price,image,id}) {
         <Typography   color="#636FA4"  height={50} fontSize='12px' >
           {description}
         </Typography>
+
+        <Typography color="#636FA4" fontSize='12px' paddingTop='1rem' fontWeight='bold'  height={20}>Slot left : <span style={{color:'red'}}>{maxUsers}</span> </Typography>
       </CardContent>
       
       <CardActions sx={{display:'flex',justifyContent:'space-between'}} >
       <Typography   color="#636FA4"  fontSize='12px' fontWeight='600' >
-        AED {price}
+         AED {price}
         </Typography>
         <Button variant='contained' onClick={handleBook}  sx={{background:'linear-gradient(to right, #f3904f, #3b4371)',borderRadius:'17.5px',height:'30px',textTransform:'none',fontSize:'12px'}}  size="large">Book Now</Button>
       </CardActions>

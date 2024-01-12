@@ -21,10 +21,10 @@ export const POST = async(request)=>{
                  })
                 .setProtectedHeader({ alg: "HS256" })
                 .setIssuedAt() 
-                .setExpirationTime("30s") 
+                .setExpirationTime("3000s") 
                 .sign(getJwtSecretKey());
             cookies().set({
-                name: 'user',
+                name: 'userToken',
                 value: token,
                 httpOnly: true,
                 path: '/',

@@ -9,21 +9,20 @@ import bcrypt from 'bcrypt'
 export const POST = async (request) => {
     try {
       
-      const { credentials } = await request.json();
+      const { username, email , password } = await request.json();
       
       await connect();
-      console.log(credentials);
+      
    
-      const user = await User.findOne({ email: credentials.email })
+      const user = await User.findOne({ email:email })
       if (!user) {
      
-        const hashedPassword = await bcrypt.hash(credentials.password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         const newUser = new User({
-          name: credentials.username,
-          email: credentials.email,
+          name: username,
+          email: email,
           password: hashedPassword, 
-          phone: credentials.phoneNumber,
         });
         try {
           console.log(newUser, "newUser");
