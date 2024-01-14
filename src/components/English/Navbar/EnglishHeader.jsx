@@ -26,8 +26,11 @@ import Cart from '../../../../public/cart.webp'
  import LoginPopup from '../LoginPopup/LoginPopup'; 
 import SignupPopup from '../SigninPopup/signpopup';
 import { useLanguage } from '@/context/LanguageContext';
+import { useRouter } from 'next/navigation';
+import { useUser } from '@/context/UserContext';
 
 import './englishheader.module.css'
+import LogoutPop from '../Logout/Logout';
 
 
 
@@ -37,9 +40,12 @@ const EnglishHeader = () => {
   const [anchorEl1, setAnchorEl1] = useState(null);
   const [loginPopupOpen, setLoginPopupOpen] = useState(false);
   const [signupPopupOpen, setSignupPopupOpen] = useState(false);
+  const [logoutpop,setLogoutpop] = useState(false)
   const { toggleLanguage,language } = useLanguage();
+  const {user,loginuser} = useUser()
+  const router = useRouter()
   const open = Boolean(anchorEl);
-  
+  console.log(loginuser,"usertrue");
   const open1 = Boolean(anchorEl1);
 
   const handleClick = (event) => {
@@ -55,8 +61,16 @@ const EnglishHeader = () => {
     setAnchorEl1(null);
   };
 
+  const handleLogout =()=>{
+    setLogoutpop(true)
+  }
+
+  const handleCloseLogout =()=>{
+    setLogoutpop(false)
+  }
+
   const handleLogin = () => {
-    setLoginPopupOpen(true);
+    router.push('/login')
   };
 
   const handleCloseLoginPopup = () => {
@@ -64,7 +78,7 @@ const EnglishHeader = () => {
   };
 
   const handleSignup = () => {
-    setSignupPopupOpen(true);
+    router.push('/register')
   };
   
   const handleCloseSignupPopup = () => {
@@ -74,6 +88,10 @@ const EnglishHeader = () => {
   const handleSelectLanguage = (lang) => {
     toggleLanguage(lang);
   };
+
+  const handleProfile = ()=>{
+    router.push('/myprofile')
+  }
 
   return (
     <Box sx={{display:'flex',alignItems:'center',justifyContent:'space-between',height:'10dvh',padding:'1rem',background:'#32385a',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',position: 'relative', overflow: 'hidden' }}>
@@ -88,7 +106,8 @@ const EnglishHeader = () => {
    </Link> : 
    <Box sx={{display:{xs:'none' ,sm:'none',md:'flex'},alignItems:'center',justifyContent:'center',gap:'1rem',color:'#021b79'}}>
      
-   <Link href='/cart'>   <Avatar sx={{cursor:'pointer',width:'30px' ,height:'30px',}}>
+   <Link href='/cart'><Avatar sx={{cursor:'pointer',width:'30px' ,height:'30px',}}>
+
    <Image src={Cart} alt="User"  fill />
    </Avatar>
    </Link>
@@ -172,12 +191,13 @@ const EnglishHeader = () => {
         >
    
           <MenuItem onClick={handleLogin}  sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
-            Log In
+            Login
           </MenuItem>
           
           <MenuItem onClick={handleSignup} sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
-            Sign Up
+          Signup
           </MenuItem>
+          
         </Menu>
   
         <Menu
@@ -272,8 +292,23 @@ const EnglishHeader = () => {
   
   
   
-  
-     <IconButton
+  {loginuser==true ? 
+  <IconButton
+  onClick={handleClick}
+  size="small"
+  sx={{ ml: 2,color:'#021b79' }}
+  aria-controls={open ? 'account-menu' : undefined}
+  aria-haspopup="true"
+  aria-expanded={open ? 'true' : undefined}
+>
+<Avatar sx={{width:'30px' ,height:'30px'}}>
+<Image src={ User  } alt="User"fill />
+
+</Avatar>
+ 
+</IconButton>
+  :
+  <IconButton
               onClick={handleClick}
               size="small"
               sx={{ ml: 2,color:'#021b79' }}
@@ -282,10 +317,13 @@ const EnglishHeader = () => {
               aria-expanded={open ? 'true' : undefined}
             >
            <Avatar sx={{width:'30px' ,height:'30px'}}>
-     <Image src={Userlog} alt="User"fill />
+       <Image src={Userlog } alt="User"fill />
+  
   </Avatar>
              
             </IconButton>
+  }
+     
   
             <IconButton
               onClick={handleClickLan}
@@ -323,50 +361,103 @@ const EnglishHeader = () => {
   <></> 
   }
 
-   <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 28,
-              height: 28,
-              ml: -0.5,
-              mr: 1,
-            },
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 15,
-              width: 15,
-              height: 15,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-60%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
-        }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      >
+   
  
-        <MenuItem onClick={handleLogin}  sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
-          Log In
-        </MenuItem>
-        
-        <MenuItem onClick={handleSignup} sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+ 
+          
+          {loginuser== true ? 
+         <Menu
+         anchorEl={anchorEl}
+         id="account-menu"
+         open={open}
+         onClose={handleClose}
+         onClick={handleClose}
+         PaperProps={{
+           elevation: 0,
+           sx: {
+             overflow: 'visible',
+             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+             mt: 1.5,
+             '& .MuiAvatar-root': {
+               width: 28,
+               height: 28,
+               ml: -0.5,
+               mr: 1,
+             },
+             '&:before': {
+               content: '""',
+               display: 'block',
+               position: 'absolute',
+               top: 0,
+               right: 15,
+               width: 15,
+               height: 15,
+               bgcolor: 'background.paper',
+               transform: 'translateY(-60%) rotate(45deg)',
+               zIndex: 0,
+             },
+           },
+         }}
+         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+       >
+          <MenuItem onClick={ handleProfile}  sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+            My Profile
+          </MenuItem>
+
+         <MenuItem onClick={ handleLogout  }   sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+         Logout
+         </MenuItem>
+         </Menu>
+          :
+
+          <Menu
+         anchorEl={anchorEl}
+         id="account-menu"
+         open={open}
+         onClose={handleClose}
+         onClick={handleClose}
+         PaperProps={{
+           elevation: 0,
+           sx: {
+             overflow: 'visible',
+             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+             mt: 1.5,
+             '& .MuiAvatar-root': {
+               width: 28,
+               height: 28,
+               ml: -0.5,
+               mr: 1,
+             },
+             '&:before': {
+               content: '""',
+               display: 'block',
+               position: 'absolute',
+               top: 0,
+               right: 15,
+               width: 15,
+               height: 15,
+               bgcolor: 'background.paper',
+               transform: 'translateY(-60%) rotate(45deg)',
+               zIndex: 0,
+             },
+           },
+         }}
+         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+       >
+          <MenuItem onClick={ handleLogin}  sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
+           Login
+         </MenuItem>
+
+         <MenuItem onClick={ handleSignup  }   sx={{fontFamily:'Rubik',fontSize:'14px' ,fontWeight:'600'}}>
           Sign Up
-        </MenuItem>
-      </Menu>
+         </MenuItem>
+         </Menu>
+          }
+
+   
+     
 
       <Menu
         anchorEl={anchorEl1}
@@ -413,6 +504,7 @@ const EnglishHeader = () => {
        {signupPopupOpen && (
         <SignupPopup open={signupPopupOpen} onClose={handleCloseSignupPopup} />
       )}
+      <LogoutPop dialogue={logoutpop} onClose={handleCloseLogout}/>
     </Box>
   )
 }

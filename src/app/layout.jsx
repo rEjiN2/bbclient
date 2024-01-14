@@ -3,6 +3,7 @@ import './globals.css'
 import EnglishHeader from '@/components/English/Navbar/EnglishHeader'
 import ArabicNavbar from '@/components/Arabic/Navbar/Arabicnavbar'
 import { LanguageProvider } from '@/context/LanguageContext'
+import { UserProvider } from '@/context/UserContext'
 
 
 const openSans = Open_Sans({
@@ -19,8 +20,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={openSans.className}>
-       
+       <UserProvider>
        <LanguageProvider>
+        
         <div>
 
         <EnglishHeader/>
@@ -29,6 +31,7 @@ export default function RootLayout({ children }) {
         {children}
         </div>
         </LanguageProvider>
+        </UserProvider>
   
         </body>
     </html>

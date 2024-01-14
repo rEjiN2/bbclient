@@ -25,7 +25,7 @@ export const POST = async (request) => {
           password: hashedPassword, 
         });
         try {
-          console.log(newUser, "newUser");
+          
           await newUser.save();
           
           return new NextResponse(JSON.stringify({ message: "User Created" }), {

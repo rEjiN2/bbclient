@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation'
 const BookingConfirm = ({courseDetails,dates}) => {
   
   
-  console.log(courseDetails,'det');
+  
   const dateData = courseDetails?.dates 
   const courseId = courseDetails?._id
   

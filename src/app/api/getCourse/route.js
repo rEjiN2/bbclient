@@ -5,10 +5,10 @@ import Courses from "@/models/Courses";
 export const GET = async (request) => {
     try {
         await connect();
-        console.log("Database connected");
+       
 
         const courses = await Courses.find();
-        console.log("Courses retrieved:", courses);
+        
 
       
         if (courses.length === 0) {

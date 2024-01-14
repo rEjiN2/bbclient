@@ -14,7 +14,6 @@ export const POST = async(request)=>{
 
       const payload = await request.text()
       const signature = request.headers.get("stripe-signature");
-
       let event;
 
       try{

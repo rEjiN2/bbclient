@@ -2,14 +2,15 @@
 import React,{useState} from 'react'
 import { Box, Button, TextField, Typography } from '@mui/material'
 import { useRouter } from 'next/navigation'
-
+import { useUser } from '@/context/UserContext'
 const Login = () => {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const router = useRouter()
+    const {login} = useUser()
 
     const handleLogin = async(e) => {
-        e.preventDefault()
+        // e.preventDefault()
         try{
           const res = await fetch('/api/auth/login',{
             method:'POST',
@@ -29,6 +30,7 @@ const Login = () => {
             if (userId) {
                 localStorage.setItem('userId', userId);
             }
+            login(response);
             router.push('/bookings')
             
            }
