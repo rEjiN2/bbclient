@@ -22,8 +22,8 @@ export const POST = async (request) => {
         quantity: 1,
       }],
       mode: "payment",
-      success_url: 'http://localhost:3000/paymentsuccess?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'http://localhost:3000/payment-cancel',
+      success_url: 'https://bbclient-theta.vercel.app/paymentsuccess?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: 'https://bbclient-theta.vercel.app/payment-cancel',
       metadata: {
         username: bookingDetails.username,
         email: bookingDetails.email,
