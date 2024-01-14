@@ -22,7 +22,7 @@ const Story = () => {
                   <Box sx={{ background: '#f3f3f3', height: '1px', width: '100%', marginTop: '0.3rem', marginBottom: '1.5rem', }}></Box>
 
 
-                  <Typography fontSize='30px' color='#f3904f' fontWeight='600'> We are the magic behind the company’s best days. </Typography>
+                  <Typography fontSize='30px' color='#f3904f' fontWeight='600'> We are the magic behind the company&apos;s best days. </Typography>
 
                    <Typography fontSize='15px' color='gray' fontWeight='500' textAlign='justify' paddingTop='1.5rem'>
                       It is a management consulting company specialized in finding development solutions for commercial and governmental projects. Today, a large number of companies need to find innovative solutions to increase sales, marketing, or manage operations.

@@ -31,7 +31,7 @@ setDates(JSON.parse(courseDetails.dates))
 }
 
 fetchCourse()
-},[])
+},[params.id])
 
 
 
