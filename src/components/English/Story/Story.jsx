@@ -27,7 +27,7 @@ const Story = () => {
                    <Typography fontSize='15px' color='gray' fontWeight='500' textAlign='justify' paddingTop='1.5rem'>
                       It is a management consulting company specialized in finding development solutions for commercial and governmental projects. Today, a large number of companies need to find innovative solutions to increase sales, marketing, or manage operations.
                   </Typography>
-                  <Typography fontSize='15px' color='gray' fontWeight='500' textAlign='justify' paddingTop='1.5rem'>Using global and proven strategies, we help you achieve your goals and create influence by strengthening your team's management, leadership qualities, mindset and methodology.</Typography>
+                  <Typography fontSize='15px' color='gray' fontWeight='500' textAlign='justify' paddingTop='1.5rem'>Using global and proven strategies, we help you achieve your goals and create influence by strengthening your team&apos;s management, leadership qualities, mindset and methodology.</Typography>
                   <Button sx={{ border: '1px solid #f3f3f3', borderRadius: '6px', color: '#fff', textTransform: 'none', width: '180px', marginTop: '1.5rem', background: 'linear-gradient(to right, #32385a, #3b4371)' }}>Load More</Button>
 
               </Box>
