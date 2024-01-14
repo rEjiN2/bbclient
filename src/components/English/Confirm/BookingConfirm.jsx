@@ -109,7 +109,7 @@ const BookingConfirm = ({courseDetails,dates}) => {
                 
             >
                 
-                {parsedDates.map((item, index) => (
+                {parsedDates?.map((item, index) => (
                     <MenuItem key={index} value={item.date}>{item.date}</MenuItem>
                 ))}
             </Select>
@@ -125,7 +125,7 @@ const BookingConfirm = ({courseDetails,dates}) => {
                       
                     >
                         
-                        {availableTimes.map((time, index) => (
+                        {availableTimes?.map((time, index) => (
                             <MenuItem key={index} value={time}>{time}</MenuItem>
                         ))}
                     </Select>
